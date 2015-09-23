@@ -24,6 +24,8 @@ class AddressBook
         @entries.delete(entry)
         break
       end
+    end
+  end
 
   def import_from_csv(file_name)
     csv_text = File.read(file_name)
@@ -50,6 +52,13 @@ class AddressBook
       elsif name > mid_name
         lower = mid + 1
       end
+    end
+    return nil
+  end
+
+  def iterative_search(name)
+    @entries.each do |entry|
+      return entry if entry.name == name
     end
     return nil
   end
