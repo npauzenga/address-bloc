@@ -55,6 +55,8 @@ RSpec.describe AddressBook do
       book.remove_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
       expect(book.entries.size).to eq 1
       expect(book.entries.first.name).to eq("Nate Pauzenga")
+    end
+  end
 
   context '#import_from_csv' do
     it 'imports the correct number of entries' do
