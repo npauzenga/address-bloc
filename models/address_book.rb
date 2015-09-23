@@ -10,12 +10,20 @@ class AddressBook
 
   def add_entry(name, phone, email)
     index = 0
+
     @entries.each do |entry|
       break if name < entry.name
       index += 1
     end
     @entries.insert(index, Entry.new(name, phone, email))
   end
+
+  def remove_entry(name, phone, email)
+    @entries.each do |entry|
+      if name == entry.name && phone == entry.phone_number && email == entry.email
+        @entries.delete(entry)
+        break
+      end
 
   def import_from_csv(file_name)
     csv_text = File.read(file_name)
