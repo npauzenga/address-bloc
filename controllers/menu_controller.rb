@@ -187,7 +187,6 @@ class MenuController
     system "clear"
   end
 
-
   def delete_entry(entry)
     @address_book.entries.delete(entry)
     puts "#{entry.name} has been deleted"
