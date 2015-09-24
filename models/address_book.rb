@@ -55,4 +55,13 @@ class AddressBook
     end
     nil
   end
+
+  def delete_all_entries
+    p "Ha! It's totally not safe!!"
+    @entries.clear
+    p "All entries deleted!"
+    puts "Press enter to return to main menu"
+    gets.chomp
+    system "clear"
+  end
 end

@@ -14,7 +14,8 @@ class MenuController
     puts "2 - Create an entry"
     puts "3 - Search for an entry"
     puts "4 - Import entries from a CSV"
-    puts "5 - Exit"
+    puts "5 - ??? (completely safe)"
+    puts "6 - Exit"
     print "Enter your selection: "
 
     selection = gets.to_i
@@ -41,6 +42,10 @@ class MenuController
       read_csv
       main_menu
     when 5
+      system "clear"
+      @address_book.delete_all_entries
+      main_menu
+    when 6
       puts "Good-bye!"
       exit(0)
 
@@ -182,12 +187,14 @@ class MenuController
     system "clear"
   end
 
+
   def delete_entry(entry)
     @address_book.entries.delete(entry)
     puts "#{entry.name} has been deleted"
   end
 
   def edit_entry(entry)
+    system "clear"
     print "Updated name: "
     name = gets.chomp
     print "Updated phone number: "
@@ -199,7 +206,11 @@ class MenuController
     entry.phone_number = phone_number unless phone_number.empty?
     entry.email = email unless email.empty?
 
+    system "clear"
     puts "Updated entry:"
     puts entry
+    puts "Press enter to return to main menu"
+    gets.chomp
+    system "clear"
   end
 end
