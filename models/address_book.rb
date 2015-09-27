@@ -37,23 +37,16 @@ class AddressBook
     end
   end
 
-  def binary_search(name)
-    lower = 0
-    upper = entries.length - 1
-
-    while lower <= upper
-      mid = (lower + upper) / 2
-      mid_name = entries[mid].name
-
-      if name == mid_name
-        return entries[mid]
-      elsif name < mid_name
-        upper = mid - 1
-      elsif name > mid_name
-        lower = mid + 1
-      end
+  def binary_search(name, lower, upper)
+    mid = (upper + lower) / 2
+    
+    if lower >= upper || entries[mid].name == name
+      entries[mid].name == name ? entries[mid] : nil
+    elsif entries[mid].name > name
+      binary_search(name, lower, (mid - 1))
+    elsif entries[mid].name < name
+      binary_search(name, (mid + 1), upper)
     end
-    return nil
   end
 
   def iterative_search(name)
