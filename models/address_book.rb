@@ -27,6 +27,10 @@ class AddressBook
     end
   end
 
+  def remove_all
+    @entries.clear
+  end
+
   def import_from_csv(file_name)
     csv_text = File.read(file_name)
     csv = CSV.parse(csv_text, headers: true, skip_blanks: true)
@@ -54,14 +58,5 @@ class AddressBook
       end
     end
     nil
-  end
-
-  def delete_all_entries
-    p "Ha! It's totally not safe!!"
-    @entries.clear
-    p "All entries deleted!"
-    puts "Press enter to return to main menu"
-    gets.chomp
-    system "clear"
   end
 end

@@ -192,6 +192,15 @@ class MenuController
     puts "#{entry.name} has been deleted"
   end
 
+  def delete_all_entries
+    p "Ha! It's totally not safe!!"
+    @address_book.remove_all
+    p "All entries deleted!"
+    puts "Press enter to return to main menu"
+    gets.chomp
+    system "clear"
+  end
+
   def edit_entry(entry)
     system "clear"
     print "Updated name: "

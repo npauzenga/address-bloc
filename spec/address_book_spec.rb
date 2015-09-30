@@ -67,7 +67,7 @@ RSpec.describe AddressBook do
   context "#delete_all_entries" do
     it "removes all entries from @entries" do
       book.import_from_csv("entries.csv")
-      book.delete_all_entries
+      book.remove_all
       expect(book.entries.size).to eql 0
     end
   end
