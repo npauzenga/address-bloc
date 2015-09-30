@@ -39,10 +39,10 @@ class AddressBook
 
   def binary_search(name, lower, upper)
     mid = (upper + lower) / 2
-    
-    if lower >= upper || entries[mid].name == name
-      entries[mid].name == name ? entries[mid] : nil
-    elsif entries[mid].name > name
+    return nil if lower > upper
+    return entries[mid] if entries[mid].name == name
+
+    if entries[mid].name > name
       binary_search(name, lower, (mid - 1))
     elsif entries[mid].name < name
       binary_search(name, (mid + 1), upper)
